@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gears of the Game - 2D Platformer Engine</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="main-menu" class="menu-container">
+        <div class="menu-content">
+            <h1>Gears of the Game</h1>
+            <p>A Simple 2D Platformer Engine</p>
+            <div class="button-group">
+                <button id="create-btn" class="menu-button">Create</button>
+                <button id="play-btn" class="menu-button">Play</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="play-menu" class="menu-container hidden">
+        <div class="menu-content">
+            <h1>Enter Save Code</h1>
+            <input type="text" id="save-code-input" placeholder="Paste your save code here..." class="save-code-input">
+            <div class="button-group">
+                <button id="load-btn" class="menu-button">Load</button>
+                <button id="back-to-main-btn" class="menu-button">Back</button>
+            </div>
+            <p id="load-error" class="error-message"></p>
+        </div>
+    </div>
+
+    <div id="editor-container" class="hidden">
+        <canvas id="editor-canvas"></canvas>
+        
+        <div id="toolbar" class="toolbar">
+            <div class="toolbar-section">
+                <h3>Block Types</h3>
+                <div class="block-buttons">
+                    <button class="block-btn" data-block="start">Start</button>
+                    <button class="block-btn" data-block="platform">Platform</button>
+                    <button class="block-btn" data-block="button">Button</button>
+                    <button class="block-btn" data-block="pressure">Pressure Plate</button>
+                    <button class="block-btn" data-block="spike">Spike</button>
+                    <button class="block-btn" data-block="lava">Lava</button>
+                    <button class="block-btn" data-block="lightbulb">Light Bulb</button>
+                    <button class="block-btn" data-block="ladder">Ladder</button>
+                    <button class="block-btn" data-block="torch">Torch</button>
+                    <button class="block-btn" data-block="moving">Moving Block</button>
+                    <button class="block-btn" data-block="rotating">Rotating Block</button>
+                    <button class="block-btn" data-block="erase">Erase</button>
+                </div>
+            </div>
+
+            <div class="toolbar-section">
+                <h3>Actions</h3>
+                <div class="action-buttons">
+                    <button id="playtest-btn" class="action-button">Playtest</button>
+                    <button id="save-code-btn" class="action-button">Get Save Code</button>
+                    <button id="clear-level-btn" class="action-button">Clear Level</button>
+                    <button id="exit-editor-btn" class="action-button">Exit</button>
+                </div>
+            </div>
+
+            <div class="toolbar-section">
+                <h3>Selected Block</h3>
+                <p id="selected-block">None</p>
+                <div id="block-properties" class="block-properties hidden">
+                    <div class="property-group">
+                        <label>Connect to Block ID:</label>
+                        <input type="number" id="connect-to-input" placeholder="Block ID" min="0">
+                    </div>
+                    <div class="property-group">
+                        <label>Light Color (Bulbs):</label>
+                        <input type="color" id="light-color-input" value="#ffff00">
+                    </div>
+                    <div class="property-group">
+                        <label>Action Type:</label>
+                        <select id="action-type-select">
+                            <option value="move">Move Block</option>
+                            <option value="rotate">Rotate Block</option>
+                            <option value="toggle">Toggle Light</option>
+                        </select>
+                    </div>
+                    <button id="apply-properties-btn" class="action-button">Apply Properties</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="game-container" class="hidden">
+        <canvas id="game-canvas"></canvas>
+        <div id="game-ui" class="game-ui">
+            <button id="exit-game-btn" class="ui-button">Exit to Menu</button>
+        </div>
+    </div>
+
+    <div id="save-code-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Save Code</h2>
+            <textarea id="save-code-textarea" readonly></textarea>
+            <div class="button-group">
+                <button id="copy-code-btn" class="menu-button">Copy to Clipboard</button>
+                <button id="close-modal-btn" class="menu-button">Close</button>
+            </div>
+            <p id="copy-message" class="success-message"></p>
+        </div>
+    </div>
+
+    <script src="js/constants.js"></script>
+    <script src="js/block.js"></script>
+    <script src="js/lighting.js"></script>
+    <script src="js/physics.js"></script>
+    <script src="js/level.js"></script>
+    <script src="js/editor.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
