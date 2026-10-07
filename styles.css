@@ -1,0 +1,17 @@
+document.addEventListener('DOMContentLoaded', () => {
+  const app = new App();
+  const editorCanvas = document.getElementById('editor-canvas');
+  const gameCanvas = document.getElementById('game-canvas');
+
+  if (editorCanvas) {
+    editorCanvas.width = GRID_WIDTH * TILE_SIZE;
+    editorCanvas.height = GRID_HEIGHT * TILE_SIZE;
+  }
+
+  if (gameCanvas) {
+    gameCanvas.width = GRID_WIDTH * TILE_SIZE;
+    gameCanvas.height = GRID_HEIGHT * TILE_SIZE;
+  }
+
+  window.app = app;
+});
