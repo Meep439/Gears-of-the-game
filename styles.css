@@ -3,6 +3,9 @@ body {
     background: #f4f4f4;
     color: #111;
     font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 * {
@@ -24,17 +27,15 @@ h1, h2, h3, p {
     display: none !important;
 }
 
-#main-menu,
-#play-menu,
-#editor-container,
-#game-container,
-#save-code-modal {
-    padding-left: 0;
+#main-menu {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-#main-menu {
-    margin: 18px 0 0 0;
-    padding-left: 20px;
+#main-menu .menu-content {
+    text-align: center;
 }
 
 #main-menu h1 {
@@ -47,9 +48,22 @@ h1, h2, h3, p {
 
 #main-menu p {
     font-size: 24px;
-    margin-bottom: 18px;
+    margin-bottom: 24px;
     color: #212121;
     font-style: italic;
+}
+
+#play-menu {
+    margin: 30px 0 0 0;
+    padding-left: 20px;
+}
+
+#play-menu h1 {
+    font-size: 58px;
+    line-height: 1.1;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 14px;
 }
 
 .button-group {
@@ -57,6 +71,11 @@ h1, h2, h3, p {
     gap: 8px;
     margin-top: 10px;
     flex-wrap: wrap;
+    justify-content: center;
+}
+
+#play-menu .button-group {
+    justify-content: flex-start;
 }
 
 .menu-button,
@@ -80,17 +99,11 @@ h1, h2, h3, p {
     min-width: 64px;
 }
 
-#play-menu {
-    margin: 30px 0 0 0;
-    padding-left: 20px;
-}
-
-#play-menu h1 {
-    font-size: 58px;
-    line-height: 1.1;
-    font-weight: 800;
-    letter-spacing: -1px;
-    margin-bottom: 14px;
+.menu-button:hover,
+.action-button:hover,
+.block-btn:hover,
+.ui-button:hover {
+    background: #e8e8e8;
 }
 
 .save-code-input,
@@ -105,6 +118,10 @@ h1, h2, h3, p {
     font-size: 16px;
     width: 220px;
     box-sizing: border-box;
+}
+
+.save-code-input {
+    margin-bottom: 8px;
 }
 
 #connect-to-input,
@@ -126,6 +143,11 @@ h1, h2, h3, p {
     align-items: center;
     justify-content: center;
     background: rgba(0,0,0,0.08);
+    z-index: 1000;
+}
+
+#save-code-modal.hidden {
+    display: none !important;
 }
 
 .modal-content {
@@ -149,10 +171,25 @@ h1, h2, h3, p {
 
 #editor-container {
     padding: 24px 0 0 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+#editor-container.hidden {
+    display: none !important;
+}
+
+#editor-canvas {
+    display: block;
+    border: 1px solid #777;
+    background: #101820;
+    margin-bottom: 12px;
 }
 
 #editor-container .toolbar {
     display: block;
+    overflow-y: auto;
+    max-height: 400px;
 }
 
 .toolbar-section {
@@ -212,14 +249,20 @@ h1, h2, h3, p {
 }
 
 #game-container {
-    display: none; /* toggled by JS */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
-#game-canvas,
-#editor-canvas {
+#game-container.hidden {
+    display: none !important;
+}
+
+#game-canvas {
     display: block;
     border: 1px solid #777;
     background: #101820;
+    margin-bottom: 12px;
 }
 
 #game-ui {
